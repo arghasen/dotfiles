@@ -6,7 +6,7 @@
 :filetype on
 :set wildignore=*.o,*.hi
 :set encoding=utf-8
-:command Spell :setlocal spell spelllang=en_us  
+:command Spell :setlocal spell spelllang=en_us
 
 nmap <F3> :bp<ENTER>
 nmap <F4> :bn<ENTER>
@@ -32,13 +32,13 @@ NeoBundle 'Shougo/neocomplete.vim'
 NeoBundle 'Shougo/neosnippet.vim'
 NeoBundle 'Shougo/neosnippet-snippets'
 NeoBundle 'Shougo/vimproc', {
-	    \ 'build' : {
-	    \     'windows' : 'tools\\update-dll-mingw',
-	    \     'cygwin' : 'make -f make_cygwin.mak',
-	    \     'mac' : 'make -f make_mac.mak',
-	    \     'unix' : 'make -f make_unix.mak',
-	    \    },
-	    \ }
+		\ 'build' : {
+		\     'windows' : 'tools\\update-dll-mingw',
+		\     'cygwin' : 'make -f make_cygwin.mak',
+		\     'mac' : 'make -f make_mac.mak',
+		\     'unix' : 'make -f make_unix.mak',
+		\    },
+		\ }
 if (v:version < 703)
     NeoBundle 'Shougo/unite.vim', {'rev' : 'a533d95433da314b99e86e7a6ce55766c3bf8475'}
 else
@@ -70,6 +70,7 @@ NeoBundle 'craigemery/vim-autotag'
 NeoBundle 'airblade/vim-gitgutter'
 NeoBundle 'edkolev/promptline.vim'
 NeoBundle 'octol/vim-cpp-enhanced-highlight'
+NeoBundle 'Shougo/vimfiler.vim'
 "
 "End of My Plugins
 "
@@ -95,11 +96,11 @@ xmap <C-k>     <Plug>(neosnippet_expand_target)
 
 " SuperTab like snippets behavior.
 imap <expr><TAB> neosnippet#expandable_or_jumpable() ?
-	    \ "\<Plug>(neosnippet_expand_or_jump)"
-	    \: pumvisible() ? "\<C-n>" : "\<TAB>"
+		\ "\<Plug>(neosnippet_expand_or_jump)"
+		\: pumvisible() ? "\<C-n>" : "\<TAB>"
 smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
-	    \ "\<Plug>(neosnippet_expand_or_jump)"
-	    \: "\<TAB>"
+		\ "\<Plug>(neosnippet_expand_or_jump)"
+		\: "\<TAB>"
 
 " For snippet_complete marker.
 if has('conceal')
@@ -187,13 +188,15 @@ set laststatus=2
 let g:airline#extensions#tabline#enabled = 1
 nnoremap <C-p> :Unite file -no-split -resume file_rec/async<cr>
 nnoremap <C-p>p :Unite file_mru -no-split  <cr>
-nnoremap <Leader>b :Unite buffer<cr>
+nnoremap <leader>b :Unite buffer<CR>
+nnoremap <leader>n :VimFilerExplorer<CR>
+
 set tags=tags;/
 let g:Powerline_symbols = 'fancy'
 let g:airline_powerline_fonts = 1
 let g:promptline_powerline_symbols = 1
-let g:airline#extensions#tmuxline#enabled = 1
-set cscopeprg=gtags-cscope
+let g:airline#extensions#tmuxline#enabled = 1 "We need a nice looking tmuxline
+set csprg=gtags-cscope
 
 "living with the typos
 :command WQ wq
@@ -214,10 +217,10 @@ let g:neocomplete#sources#syntax#min_keyword_length = 3
 let g:neocomplete#lock_buffer_name_pattern = '\*ku\*'
 " Define dictionary.
 let g:neocomplete#sources#dictionary#dictionaries = {
-	    \ 'default' : '',
-	    \ 'vimshell' : $HOME.'/.vimshell_hist',
-	    \ 'scheme' : $HOME.'/.gosh_completions'
-	    \ }
+		\ 'default' : '',
+		\ 'vimshell' : $HOME.'/.vimshell_hist',
+		\ 'scheme' : $HOME.'/.gosh_completions'
+		\ }
 
 " Define keyword.
 if !exists('g:neocomplete#keyword_patterns')
