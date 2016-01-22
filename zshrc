@@ -44,3 +44,4 @@ alias l='ls -CF'
 source ~/.prompt.sh 
 alias algo5='ssh arghas@192.168.0.27'
 export LC_ALL="en_IN.UTF-8"
+export EDITOR="vim"
