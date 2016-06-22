@@ -43,5 +43,7 @@ alias la='ls -A'
 alias l='ls -CF'
 source ~/.prompt.sh 
 alias algo5='ssh arghas@192.168.0.27'
+alias algo6='ssh arghas@192.168.0.29'
+alias mk='make -j4'
 export LC_ALL="en_IN.UTF-8"
 export EDITOR="vim"
