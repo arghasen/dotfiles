@@ -2,11 +2,12 @@
 :syntax enable
 :set sw=4
 :set tabstop=4
-:colorscheme elflord
+:set expandtab
 :filetype on
 :set wildignore=*.o,*.hi
 :set encoding=utf-8
 :command Spell :setlocal spell spelllang=en_us
+:set mouse=a
 
 nmap <F3> :bp<ENTER>
 nmap <F4> :bn<ENTER>
@@ -53,8 +54,8 @@ NeoBundle 'tpope/vim-fugitive'
 " endif
 NeoBundle 'justinmk/vim-sneak'
 NeoBundle 'bling/vim-airline'
-NeoBundle 'Townk/vim-autoclose'
 NeoBundle 'Shougo/unite-outline'
+NeoBundle 'jiangmiao/auto-pairs'
 NeoBundle 'vim-scripts/gtags.vim'
 NeoBundle 'hewes/unite-gtags'
 NeoBundle 'mhinz/vim-startify'
@@ -71,6 +72,7 @@ NeoBundle 'airblade/vim-gitgutter'
 NeoBundle 'edkolev/promptline.vim'
 NeoBundle 'octol/vim-cpp-enhanced-highlight'
 NeoBundle 'Shougo/vimfiler.vim'
+NeoBundle "altercation/vim-colors-solarized"
 "
 "End of My Plugins
 "
@@ -95,9 +97,9 @@ smap <C-k>     <Plug>(neosnippet_expand_or_jump)
 xmap <C-k>     <Plug>(neosnippet_expand_target)
 
 " SuperTab like snippets behavior.
-imap <expr><TAB> neosnippet#expandable_or_jumpable() ?
-		\ "\<Plug>(neosnippet_expand_or_jump)"
-		\: pumvisible() ? "\<C-n>" : "\<TAB>"
+"imap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+"		\ "\<Plug>(neosnippet_expand_or_jump)"
+"		\: pumvisible() ? "\<C-n>" : "\<TAB>"
 smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
 		\ "\<Plug>(neosnippet_expand_or_jump)"
 		\: "\<TAB>"
@@ -124,6 +126,7 @@ if executable('ag')
     let g:unite_source_grep_recursive_opt=''
 endif
 
+"`set ttimeout
 set ttimeoutlen=50
 
 :command -nargs=1 Todolist noautocmd vimgrep /TODO/j <args>/**/*
@@ -188,15 +191,17 @@ set laststatus=2
 let g:airline#extensions#tabline#enabled = 1
 nnoremap <C-p> :Unite file -no-split -resume file_rec/async<cr>
 nnoremap <C-p>p :Unite file_mru -no-split  <cr>
-nnoremap <leader>b :Unite buffer<CR>
+nnoremap <leader>p :Unite buffer<CR>
 nnoremap <leader>n :VimFilerExplorer<CR>
+"inoremap <ESC> <ESC><ESC>
 
-set tags=tags;/
+set tags+=~/infrastructure/tags;
 let g:Powerline_symbols = 'fancy'
 let g:airline_powerline_fonts = 1
 let g:promptline_powerline_symbols = 1
 let g:airline#extensions#tmuxline#enabled = 1 "We need a nice looking tmuxline
 set csprg=gtags-cscope
+:colorscheme desert
 
 "living with the typos
 :command WQ wq
@@ -246,10 +251,10 @@ inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 inoremap <expr><C-h> neocomplete#smart_close_popup()."\<C-h>"
 inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
 " Close popup by <Space>.
-"inoremap <expr><Space> pumvisible() ? "\<C-y>" : "\<Space>"
+inoremap <expr><Space> pumvisible() ? "\<C-y>" : "\<Space>"
 
 " AutoComplPop like behavior.
-"let g:neocomplete#enable_auto_select = 1
+let g:neocomplete#enable_auto_select = 1
 
 " Shell like behavior(not recommended).
 "set completeopt+=longest
@@ -269,12 +274,15 @@ if !exists('g:neocomplete#sources#omni#input_patterns')
   let g:neocomplete#sources#omni#input_patterns = {}
 endif
 "let g:neocomplete#sources#omni#input_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
-"let g:neocomplete#sources#omni#input_patterns.c = '[^.[:digit:] *\t]\%(\.\|->\)'
-"let g:neocomplete#sources#omni#input_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
+let g:neocomplete#sources#omni#input_patterns.c = '[^.[:digit:] *\t]\%(\.\|->\)'
+let g:neocomplete#sources#omni#input_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
 
 " For perlomni.vim setting.
 " https://github.com/c9s/perlomni.vim
-let g:neocomplete#sources#omni#input_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
+"let g:neocomplete#sources#omni#input_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
 "=======================Vim Marching============
 let g:marching_clang_command="clang"
 let g:marching_enable_neocomplete = 1
+"=======================Vim Filer================
+:let g:vimfiler_as_default_explorer = 1 "replace netrw as the default filer
+

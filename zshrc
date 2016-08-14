@@ -34,16 +34,27 @@ zstyle ':completion:*' select-prompt %SScrolling active: current selection at %p
 zstyle ':completion:*' use-compctl false
 zstyle ':completion:*' verbose true
 zstyle ':completion:*:*:vim:*:*files' ignored-patterns '*.o'
-
 zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#)*=0=01;31'
 zstyle ':completion:*:kill:*' command 'ps -u $USER -o pid,%cpu,tty,cputime,cmd'
+
 alias ls='ls --color=auto'
 alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
+
 source ~/.prompt.sh 
+
 alias algo5='ssh arghas@192.168.0.27'
 alias algo6='ssh arghas@192.168.0.29'
 alias mk='make -j4'
-export LC_ALL="en_IN.UTF-8"
+
+export CPLUS_INCLUDE_PATH='/home/arghas/local/include'
+export LIBRARY_PATH='/home/arghas/local/lib/'
 export EDITOR="vim"
+export LD_LIBRARY_PATH=/opt/gcc/4.8.3/lib64:$LD_LIBRARY_PATH
+
+LC_CTYPE=en_US.UTF-8
+LC_ALL=en_US.UTF-8
+bindkey "^R" history-incremental-search-backward
+
+path=('/home/arghas/local/bin' '/opt/gcc/4.8.3/bin' $path)
