@@ -40,6 +40,7 @@ call plug#begin()
     Plug 'vim-airline/vim-airline-themes'
     Plug 'jiangmiao/auto-pairs'
     Plug 'morhetz/gruvbox'
+    Plug 'jackguo380/vim-lsp-cxx-highlight'
 
 call plug#end()
 
