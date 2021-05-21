@@ -58,16 +58,13 @@ NeoBundle 'Shougo/unite-outline'
 NeoBundle 'jiangmiao/auto-pairs'
 NeoBundle 'vim-scripts/gtags.vim'
 NeoBundle 'hewes/unite-gtags'
-NeoBundle 'mhinz/vim-startify'
 NeoBundle 'majutsushi/tagbar'
 NeoBundle 'camelcasemotion'
-NeoBundle 'osyo-manga/vim-marching'
 
 "My Additional plugins
 NeoBundle 'edkolev/tmuxline.vim'
 let g:commentary_map_backslash = 0
 NeoBundle 'tpope/vim-commentary'
-NeoBundle 'craigemery/vim-autotag'
 NeoBundle 'airblade/vim-gitgutter'
 NeoBundle 'edkolev/promptline.vim'
 NeoBundle 'octol/vim-cpp-enhanced-highlight'
@@ -195,7 +192,6 @@ nnoremap <leader>p :Unite buffer<CR>
 nnoremap <leader>n :VimFilerExplorer<CR>
 "inoremap <ESC> <ESC><ESC>
 
-set tags+=~/infrastructure/tags;
 let g:Powerline_symbols = 'fancy'
 let g:airline_powerline_fonts = 1
 let g:promptline_powerline_symbols = 1
