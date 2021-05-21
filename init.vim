@@ -28,6 +28,10 @@ set sidescroll=1
 set fileformat=unix
 set hidden
 
+set noswapfile			"Lets delete the swaps and backups, I don't seem to use them properly
+set nobackup
+set nowb
+
 let mapleader =","
 
 call plug#begin()
@@ -39,10 +43,20 @@ call plug#begin()
 
 call plug#end()
 
+
+let g:Powerline_symbols = 'fancy'
+let g:airline_powerline_fonts = 1
+let g:promptline_powerline_symbols = 1
+let g:airline#extensions#tmuxline#enabled = 1 "We need a nice looking tmuxline
+
 nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 nnoremap <leader>e :CocCommand explorer<CR>
+
+nmap <F3> :bp<ENTER>
+nmap <F4> :bn<ENTER>
+nmap <F6> :bp\|sp\|bn\|bd <ENTER>
 
 colorscheme gruvbox
