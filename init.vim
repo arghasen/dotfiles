@@ -32,6 +32,9 @@ set noswapfile			"Lets delete the swaps and backups, I don't seem to use them pr
 set nobackup
 set nowb
 
+set splitright
+set splitbelow
+
 let mapleader =","
 
 call plug#begin()
@@ -41,7 +44,10 @@ call plug#begin()
     Plug 'jiangmiao/auto-pairs'
     Plug 'morhetz/gruvbox'
     Plug 'jackguo380/vim-lsp-cxx-highlight'
-
+    Plug 'liuchengxu/vim-clap', { 'do': ':Clap install-binary!' }
+    Plug 'tpope/vim-dispatch'
+    Plug 'voldikss/vim-floaterm'
+    Plug 'vimwiki/vimwiki'
 call plug#end()
 
 
@@ -49,12 +55,25 @@ let g:Powerline_symbols = 'fancy'
 let g:airline_powerline_fonts = 1
 let g:promptline_powerline_symbols = 1
 let g:airline#extensions#tmuxline#enabled = 1 "We need a nice looking tmuxline
+let g:vimwiki_list = [{
+            \'path': '/mnt/c/Users/argha/OneDrive/Notes',
+            \'syntax': 'default',
+            \'ext': '.md',
+            \'auto_export':1,
+            \'auto_dairy_index': 1
+        }]
+let g:clap_theme = 'material_design_dark'
 
 nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 nnoremap <leader>e :CocCommand explorer<CR>
+nmap <leader>b :Clap buffers<CR>
+nmap <leader>a :Clap grep2<CR>
+nmap <leader>p :Clap filer<CR>
+tnoremap <leader>t <C-\><C-n>:FloatermToggle<CR>
+nnoremap <leader>t :FloatermToggle<CR>
 
 nmap <F3> :bp<ENTER>
 nmap <F4> :bn<ENTER>
