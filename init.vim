@@ -34,20 +34,22 @@ set nowb
 
 set splitright
 set splitbelow
+set mouse=a
 
 let mapleader =","
 
 call plug#begin()
-    Plug 'neoclide/coc.nvim', {'branch': 'release'}
     Plug 'vim-airline/vim-airline'
     Plug 'vim-airline/vim-airline-themes'
     Plug 'jiangmiao/auto-pairs'
     Plug 'morhetz/gruvbox'
-    Plug 'jackguo380/vim-lsp-cxx-highlight'
-    Plug 'liuchengxu/vim-clap', { 'do': ':Clap install-binary!' }
     Plug 'tpope/vim-dispatch'
     Plug 'voldikss/vim-floaterm'
-    Plug 'vimwiki/vimwiki'
+    Plug 'neovim/nvim-lspconfig'
+    Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+    Plug 'nvim-lua/popup.nvim'
+    Plug 'nvim-lua/plenary.nvim'
+    Plug 'nvim-telescope/telescope.nvim'
 call plug#end()
 
 
@@ -55,20 +57,7 @@ let g:Powerline_symbols = 'fancy'
 let g:airline_powerline_fonts = 1
 let g:promptline_powerline_symbols = 1
 let g:airline#extensions#tmuxline#enabled = 1 "We need a nice looking tmuxline
-let g:vimwiki_list = [{
-            \'path': '/mnt/c/Users/argha/OneDrive/Notes',
-            \'syntax': 'default',
-            \'ext': '.md',
-            \'auto_export':1,
-            \'auto_dairy_index': 1
-        }]
-let g:clap_theme = 'material_design_dark'
 
-nmap <silent> gd <Plug>(coc-definition)
-nmap <silent> gy <Plug>(coc-type-definition)
-nmap <silent> gi <Plug>(coc-implementation)
-nmap <silent> gr <Plug>(coc-references)
-nnoremap <leader>e :CocCommand explorer<CR>
 nmap <leader>b :Clap buffers<CR>
 nmap <leader>a :Clap grep2<CR>
 nmap <leader>p :Clap filer<CR>

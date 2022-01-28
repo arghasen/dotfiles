@@ -41,9 +41,21 @@ zstyle ':completion:*:kill:*' command 'ps -u $USER -o pid,%cpu,tty,cputime,cmd'
 source ~/.prompt.sh 
 
 alias mk='make -j4'
+alias ls='exa'
+alias ll="exa -la"
+alias gs='git status'
+alias gl='git log'
+alias gcm='git commit -m'
+alias vim='nvim'
 
 export CPLUS_INCLUDE_PATH='/home/arghas/local/include'
 export LIBRARY_PATH='/home/arghas/local/lib/'
 export EDITOR="nvim"
 
+path=('/home/senargha/.local/bin' $path)
+export PATH
+
 bindkey "^R" history-incremental-search-backward
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
