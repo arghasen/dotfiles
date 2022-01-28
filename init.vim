@@ -16,7 +16,8 @@ set showcmd                     "Show incomplete cmds down the bottom
 set showmode                    "Show current mode down the bottom
 set autoread                    "Reload files changed outside vim
 
-set wildmode=list:longest,full
+set wildmode=longest:full,full
+set wildoptions+=pum
 set wildmenu                "enable ctrl-n and ctrl-p to scroll thru matches
 set wildignore+=log/**
 set wildignore+=tmp/**
@@ -50,6 +51,7 @@ call plug#begin()
     Plug 'nvim-lua/popup.nvim'
     Plug 'nvim-lua/plenary.nvim'
     Plug 'nvim-telescope/telescope.nvim'
+    Plug 'dracula/vim', { 'as': 'dracula' }
 call plug#end()
 
 
@@ -57,10 +59,18 @@ let g:Powerline_symbols = 'fancy'
 let g:airline_powerline_fonts = 1
 let g:promptline_powerline_symbols = 1
 let g:airline#extensions#tmuxline#enabled = 1 "We need a nice looking tmuxline
+let g:airline#extensions#tabline#enabled = 1
 
-nmap <leader>b :Clap buffers<CR>
-nmap <leader>a :Clap grep2<CR>
-nmap <leader>p :Clap filer<CR>
+lua << EOF
+require'lspconfig'.tsserver.setup{}
+
+EOF
+
+nmap <leader>b :Telescope buffers<CR>
+nmap <leader>a :Telescope live_grep<CR>
+nmap <leader>p :Telescope find_files<CR>
+nmap <leader>e :Telescope file_browser<CR>
+nmap <leader>f :Telescope <CR>
 tnoremap <leader>t <C-\><C-n>:FloatermToggle<CR>
 nnoremap <leader>t :FloatermToggle<CR>
 
