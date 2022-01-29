@@ -50,6 +50,8 @@ alias gs='git status'
 alias gl='git log'
 alias gcm='git commit -m'
 alias vim='nvim'
+alias gd='git diff'
+alias ga="git add"
 
 export CPLUS_INCLUDE_PATH='/home/arghas/local/include'
 export LIBRARY_PATH='/home/arghas/local/lib/'
