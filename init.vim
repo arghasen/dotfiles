@@ -45,6 +45,7 @@ call plug#begin()
     Plug 'jiangmiao/auto-pairs'
     Plug 'morhetz/gruvbox'
     Plug 'tpope/vim-dispatch'
+    Plug 'tpope/vim-commentary'
     Plug 'voldikss/vim-floaterm'
     Plug 'neovim/nvim-lspconfig'
     Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}

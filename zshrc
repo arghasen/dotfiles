@@ -1,3 +1,9 @@
+source ~/dotfiles/antigen.zsh
+#antigen use oh-my-zsh
+#
+antigen bundle agkozak/zsh-z
+antigen bundle zsh-users/zsh-autosuggestions
+antigen apply
 # Set up the prompt
 
 autoload -Uz compinit promptinit
@@ -16,7 +22,7 @@ SAVEHIST=1000
 HISTFILE=~/.zsh_history
 
 plugins=(
-    z
+    zsh-z
     zsh-autosuggestions
     )
 zstyle ':completion:*' auto-description 'specify: %d'
