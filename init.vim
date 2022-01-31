@@ -57,6 +57,7 @@ call plug#begin()
     Plug 'hrsh7th/cmp-nvim-lsp'
     Plug 'saadparwaiz1/cmp_luasnip'
     Plug 'L3MON4D3/LuaSnip'
+    Plug 'kyazdani42/nvim-web-devicons'
 call plug#end()
 
 
@@ -67,6 +68,7 @@ let g:airline#extensions#tmuxline#enabled = 1 "We need a nice looking tmuxline
 let g:airline#extensions#tabline#enabled = 1
 
 lua << EOF
+require'nvim-web-devicons'.setup { default = true}
 require('telescope').setup{ defaults = { vimgrep_arguments = { 'rg', '--hidden', '--color=never', '--no-heading', '--with-filename', '--line-number', '--column', '--smart-case' }}}
 
 -- luasnip setup
@@ -145,13 +147,16 @@ local on_attach = function(client, bufnr)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>f', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
 end
 
+vim.diagnostic.config({
+  virtual_text = false,
+})
 -- nvim-cmp supports additional completion capabilities
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
 
 -- Use a loop to conveniently call 'setup' on multiple servers and
 -- map buffer local keybindings when the language server attaches
-local servers = { 'pyright', 'rust_analyzer', 'tsserver' }
+local servers = { 'pyright', 'rust_analyzer', 'tsserver', }
 for _, lsp in pairs(servers) do
   require('lspconfig')[lsp].setup {
     on_attach = on_attach,
@@ -161,6 +166,24 @@ for _, lsp in pairs(servers) do
     }
   }
 end
+
+require('lspconfig').clangd.setup{
+    on_attach = on_attach,
+    cmd={
+     "clangd",
+           "--background-index",
+           "-j=12",
+           "--query-driver=/usr/bin/**/clang-*,/bin/clang,/bin/clang++,/usr/bin/gcc,/usr/bin/g++,/home/senargha/workspace/emsdk/upstream/emscripten/emcc, /home/senargha/workspace/emsdk/upstream/emscripten/em++",
+           "--clang-tidy",
+           "--clang-tidy-checks=*,-fuchsia-*",
+           "--all-scopes-completion",
+           "--cross-file-rename",
+           "--completion-style=detailed",
+           "--header-insertion-decorators",
+           "--header-insertion=iwyu",
+           "--pch-storage=memory",
+    },
+  }
 
 EOF
 
