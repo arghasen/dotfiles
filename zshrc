@@ -52,6 +52,7 @@ alias gcm='git commit -m'
 alias vim='nvim'
 alias gd='git diff'
 alias ga="git add"
+alias cm="gcloud compute ssh iamslowdeath@instance-1 --zone us-central1-a"
 
 export CPLUS_INCLUDE_PATH='/home/arghas/local/include'
 export LIBRARY_PATH='/home/arghas/local/lib/'
@@ -65,3 +66,13 @@ bindkey "^R" history-incremental-search-backward
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+
+# Load Angular CLI autocompletion.
+source <(ng completion script)
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/home/argha/google-cloud-sdk/path.zsh.inc' ]; then . '/home/argha/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/home/argha/google-cloud-sdk/completion.zsh.inc' ]; then . '/home/argha/google-cloud-sdk/completion.zsh.inc'; fi
