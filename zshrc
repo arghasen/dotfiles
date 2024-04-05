@@ -44,8 +44,8 @@ zstyle ':completion:*:kill:*' command 'ps -u $USER -o pid,%cpu,tty,cputime,cmd'
 source ~/.prompt.sh 
 
 alias mk='make -j4'
-alias ls='exa'
-alias ll="exa -la"
+alias ls='eza'
+alias ll="eza -la"
 alias gs='git status'
 alias gl='git log'
 alias gcm='git commit -m'
