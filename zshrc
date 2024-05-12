@@ -53,6 +53,7 @@ alias vim='nvim'
 alias gd='git diff'
 alias ga="git add"
 alias cm="gcloud compute ssh iamslowdeath@instance-1 --zone us-central1-a"
+alias lg="lazygit"
 
 export CPLUS_INCLUDE_PATH='/home/arghas/local/include'
 export LIBRARY_PATH='/home/arghas/local/lib/'
@@ -76,3 +77,12 @@ if [ -f '/home/argha/google-cloud-sdk/path.zsh.inc' ]; then . '/home/argha/googl
 
 # The next line enables shell command completion for gcloud.
 if [ -f '/home/argha/google-cloud-sdk/completion.zsh.inc' ]; then . '/home/argha/google-cloud-sdk/completion.zsh.inc'; fi
+eval "$(fzf --zsh)"
+
+# pnpm
+export PNPM_HOME="/Users/arghasen/Library/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end
